@@ -11,7 +11,7 @@ Understand repo state and history.
 
 | Cheat | Description |
 | --- | --- |
-| Working tree status | git status<br/><br/><strong>Comments</strong><br/><pre>{<br/>  "example": "git status --porcelain"<br/>}</pre> |
+| Working tree status | git status<br/><br/><strong>Comments</strong><br/><pre>&#123;<br/>  "example": "git status --porcelain"<br/>&#125;</pre> |
 | Show last commits | git log --oneline --decorate --graph --max-count 20 |
 
 ## Changes
