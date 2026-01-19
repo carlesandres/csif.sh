@@ -11,8 +11,8 @@ const config: Config = {
     v4: true,
   },
 
-  url: 'https://csif.sh',
-  baseUrl: '/',
+  url: 'https://carlesandres.github.io',
+  baseUrl: '/csif.sh/',
 
   organizationName: 'carlesandres',
   projectName: 'csif.sh',
