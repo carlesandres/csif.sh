@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://csif.sh/schema/v1/csif.schema.json",
-  "title": "CSIF Cheatsheet",
+  "$id": "https://chson.dev/schema/v1/chson.schema.json",
+  "title": "ChSON Cheatsheet",
   "type": "object",
   "additionalProperties": true,
   "required": ["title", "publicationDate", "description", "sections"],
