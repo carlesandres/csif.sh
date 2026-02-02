@@ -1,11 +1,11 @@
 {
-  "name": "@csif/cli",
+  "name": "@chson/cli",
   "version": "0.0.1",
   "private": true,
-  "description": "CSIF CLI tools (validate, render)",
+  "description": "ChSON CLI tools (validate, render)",
   "license": "MIT",
   "bin": {
-    "csif": "./src/csif.js"
+    "chson": "./src/chson.js"
   },
   "type": "module",
   "dependencies": {

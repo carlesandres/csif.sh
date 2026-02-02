@@ -10,19 +10,19 @@ import addFormats from "ajv-formats";
 
 function usage() {
   return [
-    "CSIF CLI",
+    "ChSON CLI",
     "",
     "Usage:",
-    "  csif validate <file-or-dir> [...more]",
-    "  csif render markdown <file-or-dir> [...more] [--out <dir>]",
+    "  chson validate <file-or-dir> [...more]",
+    "  chson render markdown <file-or-dir> [...more] [--out <dir>]",
     "",
     "Notes:",
-    "  - If a directory is provided, scans for *.csif.json recursively.",
+    "  - If a directory is provided, scans for *.chson.json recursively.",
     "  - render outputs 2-column Markdown tables.",
   ].join("\n");
 }
 
-function collectCsifFiles(inputPath) {
+function collectChsonFiles(inputPath) {
   const results = [];
 
   function walk(currentPath) {
@@ -35,7 +35,7 @@ function collectCsifFiles(inputPath) {
       return;
     }
 
-    if (stat.isFile() && currentPath.endsWith(".csif.json")) {
+    if (stat.isFile() && currentPath.endsWith(".chson.json")) {
       results.push(currentPath);
     }
   }
@@ -72,10 +72,10 @@ function loadSchema() {
   const thisFile = fileURLToPath(import.meta.url);
   const startDir = path.dirname(thisFile);
 
-  const schemaPath = findUp(startDir, path.join("schema", "v1", "csif.schema.json"));
+  const schemaPath = findUp(startDir, path.join("schema", "v1", "chson.schema.json"));
   if (!schemaPath) {
     throw new Error(
-      `Could not locate CSIF schema (expected schema/v1/csif.schema.json). Started from: ${startDir}`,
+      `Could not locate ChSON schema (expected schema/v1/chson.schema.json). Started from: ${startDir}`,
     );
   }
 
@@ -96,23 +96,23 @@ function escapeMarkdown(text) {
     .replaceAll("\n", "<br/>");
 }
 
-function renderMarkdownTable(csif) {
+function renderMarkdownTable(chson) {
   const lines = [];
-  lines.push(`# ${escapeMarkdown(csif.title ?? "")}`);
+  lines.push(`# ${escapeMarkdown(chson.title ?? "")}`);
   lines.push("");
 
-  if (csif.version) {
-    lines.push(`Version: ${escapeMarkdown(csif.version)}`);
+  if (chson.version) {
+    lines.push(`Version: ${escapeMarkdown(chson.version)}`);
   }
-  if (csif.publicationDate) {
-    lines.push(`Published: ${escapeMarkdown(csif.publicationDate)}`);
+  if (chson.publicationDate) {
+    lines.push(`Published: ${escapeMarkdown(chson.publicationDate)}`);
   }
-  if (csif.description) {
+  if (chson.description) {
     lines.push("");
-    lines.push(escapeMarkdown(csif.description));
+    lines.push(escapeMarkdown(chson.description));
   }
 
-  const sections = Array.isArray(csif.sections) ? csif.sections : [];
+  const sections = Array.isArray(chson.sections) ? chson.sections : [];
   for (const section of sections) {
     lines.push("");
     lines.push(`## ${escapeMarkdown(section.title ?? "")}`);
@@ -184,7 +184,7 @@ function writeRenderedMarkdown(outputDir, inputFilePath, markdown, baseDir) {
   }
 
   const relativePath = path.relative(baseDir, inputFilePath);
-  const relativeMarkdownPath = relativePath.replace(/\.csif\.json$/i, ".md");
+  const relativeMarkdownPath = relativePath.replace(/\.chson\.json$/i, ".md");
   const outPath = path.join(outputDir, relativeMarkdownPath);
 
   fs.mkdirSync(path.dirname(outPath), { recursive: true });
@@ -215,7 +215,7 @@ function main(argv) {
       }
       const stat = fs.statSync(input);
       if (stat.isDirectory()) {
-        files.push(...collectCsifFiles(input));
+        files.push(...collectChsonFiles(input));
       } else {
         files.push(input);
       }
@@ -227,7 +227,7 @@ function main(argv) {
 
   if (command === "render") {
     if (subcommand !== "markdown") {
-      console.error("Only supported: csif render markdown ...");
+      console.error("Only supported: chson render markdown ...");
       return 2;
     }
 
@@ -257,7 +257,7 @@ function main(argv) {
       }
       const stat = fs.statSync(input);
       if (stat.isDirectory()) {
-        for (const filePath of collectCsifFiles(input)) {
+        for (const filePath of collectChsonFiles(input)) {
           renderTargets.push({ filePath, baseDir: input });
         }
       } else {
@@ -266,8 +266,8 @@ function main(argv) {
     }
 
     for (const { filePath, baseDir } of renderTargets) {
-      const csif = parseJsonFile(filePath);
-      const markdown = renderMarkdownTable(csif);
+      const chson = parseJsonFile(filePath);
+      const markdown = renderMarkdownTable(chson);
       writeRenderedMarkdown(outputDir, filePath, markdown, baseDir);
     }
 
