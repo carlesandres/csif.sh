@@ -1,35 +1,35 @@
-# CSIF — CheatSheet Interchange Format
+# ChSON — Cheatsheet JSON Format
 
-CSIF is a small JSON-based format for writing software cheatsheets in a consistent,
+ChSON is a small JSON-based format for writing software cheatsheets in a consistent,
 tool-friendly way.
 
 The goal is simple: make it easy for developers to publish cheatsheets once and then
 consume them in many ways — searchable websites, printable pages, study decks, or
 personal knowledge bases.
 
-## What’s in a CSIF cheatsheet?
+## What’s in a ChSON cheatsheet?
 
-A CSIF file is a single JSON document with:
+A ChSON file is a single JSON document with:
 
 - top-level metadata (`title`, optional `version`, `publicationDate`, `description`)
 - optional `metadata` for custom fields
 - a `sections[]` array, each containing `items[]` (the individual cheats)
 
-Files use the extension `.csif.json`.
+Files use the extension `.chson.json`.
 
 ## Schema
 
-CSIF files validate against the canonical JSON Schema:
+ChSON files validate against the canonical JSON Schema:
 
-- `https://csif.sh/schema/v1/csif.schema.json`
+- `https://chson.dev/schema/v1/chson.schema.json`
 
 In each cheatsheet, set:
 
-```json
-{
-  "$schema": "https://csif.sh/schema/v1/csif.schema.json"
-}
-```
+  ```json
+  {
+  "$schema": "https://chson.dev/schema/v1/chson.schema.json"
+  }
+  ```
 
 ## Quickstart
 
@@ -48,13 +48,13 @@ npm run validate
 Validate a single file:
 
 ```bash
-node packages/csif-cli/src/csif.js validate cheatsheets/git/core.csif.json
+node packages/chson-cli/src/chson.js validate cheatsheets/git/core.chson.json
 ```
 
 Render a single cheatsheet to Markdown (2-column table) to stdout:
 
 ```bash
-node packages/csif-cli/src/csif.js render markdown cheatsheets/git/core.csif.json
+node packages/chson-cli/src/chson.js render markdown cheatsheets/git/core.chson.json
 ```
 
 Render all cheatsheets into the Docusaurus docs registry:
@@ -67,7 +67,7 @@ npm run render:docs
 
 Example cheatsheets live under `cheatsheets/` and are rendered into the docs site.
 
-- Example source file: `cheatsheets/git/core.csif.json`
+- Example source file: `cheatsheets/git/core.chson.json`
 - Generated docs page: `website/docs/registry/git/core.md`
 
 ## Documentation site (Docusaurus)
@@ -84,9 +84,9 @@ Then open `http://localhost:3000`.
 
 ## Repository layout
 
-- `schema/v1/csif.schema.json` — CSIF JSON Schema
-- `cheatsheets/**/**/*.csif.json` — source cheatsheets (registry)
-- `packages/csif-cli/` — CLI (`csif`) for validate + render
+- `schema/v1/chson.schema.json` — ChSON JSON Schema
+- `cheatsheets/**/**/*.chson.json` — source cheatsheets (registry)
+- `packages/chson-cli/` — CLI (`chson`) for validate + render
 - `website/` — Docusaurus docs site
 - `website/docs/registry/` — generated Markdown pages (do not hand-edit)
 
@@ -94,8 +94,8 @@ Then open `http://localhost:3000`.
 
 This repo currently ships a minimal Node CLI:
 
-- Validate CSIF files using AJV
-- Render CSIF to Markdown using 2-column tables (`Cheat` / `Description`)
+- Validate ChSON files using AJV
+- Render ChSON to Markdown using 2-column tables (`Cheat` / `Description`)
 
 If you want to build a renderer (PDF, flashcards, etc.), the current schema is intentionally
 minimal — the `comments` field can hold any extra structure you need while the standard
@@ -118,7 +118,7 @@ npm run render:docs
 
 ## Status
 
-CSIF is early and evolving. The current focus is:
+ChSON is early and evolving. The current focus is:
 
 - a stable minimal schema
 - a growing registry of example cheatsheets

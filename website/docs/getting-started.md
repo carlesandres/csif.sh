@@ -4,15 +4,15 @@ sidebar_position: 3
 
 # Getting Started
 
-Create your first CSIF cheatsheet in under 5 minutes.
+Create your first ChSON cheatsheet in under 5 minutes.
 
 ## 1. Create the File
 
-Create a file named `my-tool.csif.json`:
+Create a file named `my-tool.chson.json`:
 
 ```json
 {
-  "$schema": "https://csif.sh/schema/v1/csif.schema.json",
+  "$schema": "https://chson.dev/schema/v1/chson.schema.json",
   "title": "My Tool Cheatsheet",
   "publicationDate": "2026-01-16",
   "description": "Quick reference for My Tool.",
@@ -38,7 +38,7 @@ Create a file named `my-tool.csif.json`:
 
 ## 2. Validate It
 
-Use the CSIF CLI to check your file:
+Use the ChSON CLI to check your file:
 
 ```bash
 # Clone the repo
@@ -49,7 +49,7 @@ cd csif.sh
 npm install
 
 # Validate your cheatsheet
-node packages/csif-cli/src/csif.js validate path/to/my-tool.csif.json
+node packages/chson-cli/src/chson.js validate path/to/my-tool.chson.json
 ```
 
 ## 3. Render It
@@ -57,7 +57,7 @@ node packages/csif-cli/src/csif.js validate path/to/my-tool.csif.json
 Convert to Markdown:
 
 ```bash
-node packages/csif-cli/src/csif.js render markdown path/to/my-tool.csif.json
+node packages/chson-cli/src/chson.js render markdown path/to/my-tool.chson.json
 ```
 
 This outputs a formatted Markdown table you can use in documentation, READMEs, or static sites.

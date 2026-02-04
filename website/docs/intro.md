@@ -3,9 +3,9 @@ sidebar_position: 1
 slug: /
 ---
 
-# What is CSIF?
+# What is ChSON?
 
-**CSIF** (CheatSheet Interchange Format) is a simple JSON format for writing software cheatsheets in a consistent, tool-friendly way.
+**ChSON** is a simple JSON format for writing software cheatsheets in a consistent, tool-friendly way.
 
 ## The Problem
 
@@ -18,7 +18,7 @@ Developers constantly create and share cheatsheets, but they're scattered across
 
 ## The Solution
 
-CSIF provides a **standard JSON structure** that any tool can read, write, and transform. Write your cheatsheet once, then:
+ChSON provides a **standard JSON structure** that any tool can read, write, and transform. Write your cheatsheet once, then:
 
 - Render it as a searchable website
 - Generate printable PDFs
@@ -30,7 +30,7 @@ CSIF provides a **standard JSON structure** that any tool can read, write, and t
 
 ```json
 {
-  "$schema": "https://csif.sh/schema/v1/csif.schema.json",
+  "$schema": "https://chson.dev/schema/v1/chson.schema.json",
   "title": "Git Essentials",
   "publicationDate": "2026-01-16",
   "description": "Essential git commands.",
@@ -51,4 +51,4 @@ CSIF provides a **standard JSON structure** that any tool can read, write, and t
 
 ## Browse Cheatsheets
 
-Check out the [Registry](/docs/registry) to see CSIF in action with real cheatsheets for Git, Docker, npm, Vim, and more.
+Check out the [Registry](/docs/registry) to see ChSON in action with real cheatsheets for Git, Docker, npm, Vim, and more.

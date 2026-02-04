@@ -4,9 +4,9 @@ sidebar_position: 2
 
 # Schema Reference
 
-CSIF uses [JSON Schema](https://json-schema.org/) (Draft 2020-12) for validation.
+ChSON uses [JSON Schema](https://json-schema.org/) (Draft 2020-12) for validation.
 
-**Schema URL:** `https://csif.sh/schema/v1/csif.schema.json`
+**Schema URL:** `https://chson.dev/schema/v1/chson.schema.json`
 
 ## Top-Level Structure
 
@@ -41,10 +41,10 @@ CSIF uses [JSON Schema](https://json-schema.org/) (Draft 2020-12) for validation
 
 ```json
 {
-  "$schema": "https://csif.sh/schema/v1/csif.schema.json",
+  "$schema": "https://chson.dev/schema/v1/chson.schema.json",
   "title": "My Cheatsheet",
   "publicationDate": "2026-01-16",
-  "description": "A minimal CSIF cheatsheet.",
+  "description": "A minimal ChSON cheatsheet.",
   "sections": [
     {
       "title": "Getting Started",
@@ -62,7 +62,7 @@ CSIF uses [JSON Schema](https://json-schema.org/) (Draft 2020-12) for validation
 
 ## Extensibility
 
-CSIF allows additional properties at all levels (`additionalProperties: true`). This lets you add custom fields for your specific use case while remaining compatible with standard tooling.
+ChSON allows additional properties at all levels (`additionalProperties: true`). This lets you add custom fields for your specific use case while remaining compatible with standard tooling.
 
 Common custom fields in `metadata`:
 - `homepage` - URL to the official documentation

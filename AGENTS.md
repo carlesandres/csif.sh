@@ -6,10 +6,10 @@ Note: `CLAUDE.md` is a symlink to `AGENTS.md` (intentionally kept that way).
 
 ## What Is This Repo?
 
-CSIF (CheatSheet Interchange Format) is a JSON-based format for software cheatsheets. This repo contains:
-- The JSON Schema (`schema/v1/csif.schema.json`)
-- Example cheatsheets (`cheatsheets/**/*.csif.json`)
-- A Node.js CLI for validation and rendering (`packages/csif-cli/`)
+ChSON is a JSON-based format for software cheatsheets. This repo contains:
+- The JSON Schema (`schema/v1/chson.schema.json`)
+- Example cheatsheets (`cheatsheets/**/*.chson.json`)
+- A Node.js CLI for validation and rendering (`packages/chson-cli/`)
 - A Docusaurus documentation site (`website/`)
 
 ## Commands
@@ -22,10 +22,10 @@ npm install
 npm run validate
 
 # Validate a single file
-node packages/csif-cli/src/csif.js validate cheatsheets/git/core.csif.json
+node packages/chson-cli/src/chson.js validate cheatsheets/git/core.chson.json
 
 # Render cheatsheet to stdout
-node packages/csif-cli/src/csif.js render markdown cheatsheets/git/core.csif.json
+node packages/chson-cli/src/chson.js render markdown cheatsheets/git/core.chson.json
 
 # Render all cheatsheets to docs
 npm run render:docs
@@ -39,14 +39,14 @@ cd website && npm run typecheck
 
 ## Architecture
 
-**Data flow**: `.csif.json` files → CLI validates against schema → CLI renders to Markdown → Docusaurus serves docs
+**Data flow**: `.chson.json` files → CLI validates against schema → CLI renders to Markdown → Docusaurus serves docs
 
 **Key files**:
-- `packages/csif-cli/src/csif.js` - Single-file CLI with validate and render commands
-- `schema/v1/csif.schema.json` - JSON Schema (Draft 2020-12) defining the CSIF format
+- `packages/chson-cli/src/chson.js` - Single-file CLI with validate and render commands
+- `schema/v1/chson.schema.json` - JSON Schema (Draft 2020-12) defining the ChSON format
 - `website/docs/registry/` - Generated Markdown (do not hand-edit; regenerate with `npm run render:docs`)
 
-**CSIF schema structure**:
+**ChSON schema structure**:
 ```
 {
   title, version?, publicationDate, description, metadata?,
@@ -57,8 +57,8 @@ cd website && npm run typecheck
 ## Workflow
 
 **Adding cheatsheets**:
-1. Create `cheatsheets/<product>/<name>.csif.json`
-2. Include `"$schema": "https://csif.sh/schema/v1/csif.schema.json"`
+1. Create `cheatsheets/<product>/<name>.chson.json`
+2. Include `"$schema": "https://chson.dev/schema/v1/chson.schema.json"`
 3. Run `npm run validate`
 4. Run `npm run render:docs` to regenerate Markdown
 
@@ -66,7 +66,7 @@ cd website && npm run typecheck
 
 ## Code Style
 
-**JavaScript** (`packages/csif-cli/`):
+**JavaScript** (`packages/chson-cli/`):
 - ES modules, Node 20+
 - 2-space indent, double quotes
 - Import order: `node:*` builtins, then third-party, then local (blank lines between groups)

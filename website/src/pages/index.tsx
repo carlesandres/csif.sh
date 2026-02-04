@@ -109,10 +109,10 @@ function ExampleSection(): ReactNode {
         <Heading as="h2" className={styles.sectionTitle}>How It Works</Heading>
         <div className={styles.exampleGrid}>
           <div className={styles.exampleCode}>
-            <div className={styles.codeHeader}>cheatsheet.csif.json</div>
+            <div className={styles.codeHeader}>cheatsheet.chson.json</div>
             <pre className={styles.codeBlock}>
 {`{
-  "$schema": "https://csif.sh/schema/v1/csif.schema.json",
+  "$schema": "https://chson.dev/schema/v1/chson.schema.json",
   "title": "Git Essentials",
   "publicationDate": "2026-01-16",
   "description": "Essential git commands.",
@@ -159,7 +159,7 @@ function ExampleSection(): ReactNode {
 export default function Home(): ReactNode {
   return (
     <Layout
-      title="CheatSheet Interchange Format"
+      title="ChSON"
       description="A simple JSON format for writing software cheatsheets. Write once, render anywhere.">
       <HomepageHeader />
       <main>

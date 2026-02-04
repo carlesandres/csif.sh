@@ -3,8 +3,8 @@ import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
-  title: 'CSIF',
-  tagline: 'CheatSheet Interchange Format',
+  title: 'ChSON',
+  tagline: 'Cheatsheet JSON Format',
   favicon: 'img/favicon.ico',
 
   future: {
@@ -47,9 +47,9 @@ const config: Config = {
       respectPrefersColorScheme: true,
     },
     navbar: {
-      title: 'CSIF',
+      title: 'ChSON',
       logo: {
-        alt: 'CSIF Logo',
+        alt: 'ChSON Logo',
         src: 'img/logo.svg',
       },
       items: [
@@ -78,7 +78,7 @@ const config: Config = {
           title: 'Learn',
           items: [
             {
-              label: 'What is CSIF?',
+              label: 'What is ChSON?',
               to: '/docs',
             },
             {
@@ -105,7 +105,7 @@ const config: Config = {
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} CSIF Project.`,
+      copyright: `Copyright © ${new Date().getFullYear()} ChSON Project.`,
     },
     prism: {
       theme: prismThemes.github,
