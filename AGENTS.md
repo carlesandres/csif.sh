@@ -10,7 +10,7 @@ ChSON is a JSON-based format for software cheatsheets. This repo contains:
 - The JSON Schema (`schema/v1/chson.schema.json`)
 - Example cheatsheets (`cheatsheets/**/*.chson.json`)
 - A Node.js CLI for validation and rendering (`packages/chson-cli/`)
-- A Docusaurus documentation site (`website/`)
+- An Astro website (`apps/site/`)
 
 ## Commands
 
@@ -27,24 +27,23 @@ node packages/chson-cli/src/chson.js validate cheatsheets/git/core.chson.json
 # Render cheatsheet to stdout
 node packages/chson-cli/src/chson.js render markdown cheatsheets/git/core.chson.json
 
-# Render all cheatsheets to docs
-npm run render:docs
+# Website (Astro)
+npm run dev
+npm run build
+npm run typecheck
 
-# Docs site (in website/)
-cd website && npm install
-cd website && npm start       # dev server
-cd website && npm run build   # production build
-cd website && npm run typecheck
+# (Optional) Render legacy registry Markdown into website/docs/registry
+npm run render:docs
 ```
 
 ## Architecture
 
-**Data flow**: `.chson.json` files → CLI validates against schema → CLI renders to Markdown → Docusaurus serves docs
+**Data flow**: `.chson.json` files → CLI validates against schema → CLI renders (Markdown or web) → site serves pages
 
 **Key files**:
 - `packages/chson-cli/src/chson.js` - Single-file CLI with validate and render commands
 - `schema/v1/chson.schema.json` - JSON Schema (Draft 2020-12) defining the ChSON format
-- `website/docs/registry/` - Generated Markdown (do not hand-edit; regenerate with `npm run render:docs`)
+- `apps/site/` - Astro website
 
 **ChSON schema structure**:
 ```

@@ -57,7 +57,7 @@ Render a single cheatsheet to Markdown (2-column table) to stdout:
 node packages/chson-cli/src/chson.js render markdown cheatsheets/git/core.chson.json
 ```
 
-Render all cheatsheets into the Docusaurus docs registry:
+Render all cheatsheets into a directory of Markdown pages (optional / legacy):
 
 ```bash
 npm run render:docs
@@ -65,30 +65,30 @@ npm run render:docs
 
 ## Registry
 
-Example cheatsheets live under `cheatsheets/` and are rendered into the docs site.
+Example cheatsheets live under `cheatsheets/` and are showcased in the Astro website.
 
 - Example source file: `cheatsheets/git/core.chson.json`
-- Generated docs page: `website/docs/registry/git/core.md`
+- Website page: `apps/site/src/pages/cheatsheets/[product]/[name].astro`
 
-## Documentation site (Docusaurus)
+Optional legacy output (auto-generated Markdown):
 
-The docs site lives in `website/`.
+- `website/docs/registry/` (do not hand-edit; regenerate with `npm run render:docs`)
+
+## Website
+
+The website lives in `apps/site/` (Astro).
 
 ```bash
-cd website
 npm install
-npm start
+npm run dev
 ```
-
-Then open `http://localhost:3000`.
 
 ## Repository layout
 
 - `schema/v1/chson.schema.json` — ChSON JSON Schema
 - `cheatsheets/**/**/*.chson.json` — source cheatsheets (registry)
 - `packages/chson-cli/` — CLI (`chson`) for validate + render
-- `website/` — Docusaurus docs site
-- `website/docs/registry/` — generated Markdown pages (do not hand-edit)
+- `apps/site/` — Astro website
 
 ## Tooling
 
