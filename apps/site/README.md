@@ -28,3 +28,5 @@ npm run typecheck
 This site is intended to be deployed on Vercel.
 
 - Domain: `chson.carlesandres.com`
+
+Monorepo builds are configured via the repo-level `vercel.json`.
